@@ -3,7 +3,37 @@
 <head>
     <meta charset="UTF-8">
 </head>
+<style>
+    .layout{
+        width:500px;
+        margin:0 auto;
+        margin-top:40px;
+    }
+    .con_name{
+        width:100%;
+        box-sizing:border-box;
+        margin-top:10px;
+    }
+    .date{
+        width:100%;
+        box-sizing:border-box;
+        margin-top:10px;
+    }
+    .serial_code{
+        width:100%;
+        box-sizing:border-box;
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+</style>
 <body>
-    <form>new</form>
+    <div class="layout">
+        <form action="/be/createpro" method="post">
+            <input name="con_name" type="text" class="con_name" placeholder="con_name">
+            <input name="date" type="text" class="date" placeholder="date">
+            <input name="serial_code" type="text" class="serial_code" placeholder="serial_code">
+            <button type="submit">올리기</button>
+        </form>
+    </div>
 </body>
 </html>
