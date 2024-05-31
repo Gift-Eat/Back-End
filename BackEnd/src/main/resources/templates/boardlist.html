@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<style>
+    .layout{
+        width:500px;
+        margin:0 auto;
+        margin-top:40px;
+    }
+    .layout_image{
+        width:500px;
+        height:500px;
+    }
+</style>
+<body>
+    <div class="layout">
+        <div class="layout_table">
+            <table>
+                <thead>
+                <tr>
+                    <th>con_name</th>
+                    <th>date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each = "be : ${list}">
+                    <td th:text="${be.con_name}"></td>
+                    <td>
+                        <a th:text="${be.date}"></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="layout_image"></div>
+    </div>
+</body>
+</html>
