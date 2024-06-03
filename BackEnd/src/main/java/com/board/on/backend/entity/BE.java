@@ -14,4 +14,6 @@ public class BE {
     private String con_name;
     private String serial_code;
     private Integer date;
+    private String where_to_use;
+    private Integer register_time;
 }

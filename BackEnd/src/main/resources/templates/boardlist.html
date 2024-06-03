@@ -20,16 +20,20 @@
             <table>
                 <thead>
                 <tr>
+                    <th>where_to_use</th>
                     <th>con_name</th>
                     <th>date</th>
+                    <th>serial_code</th>
+                    <th>register_time</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each = "be : ${list}">
+                    <td th:text="${be.where_to_use}"></td>
                     <td th:text="${be.con_name}"></td>
-                    <td>
-                        <a th:text="${be.date}"></a>
-                    </td>
+                    <td th:text="${be.date}"></td>
+                    <td th:text="${be.serial_code}"></td>
+                    <td th:text="${be.register_time}"></td>
                 </tr>
                 </tbody>
             </table>

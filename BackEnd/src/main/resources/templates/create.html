@@ -9,12 +9,22 @@
         margin:0 auto;
         margin-top:40px;
     }
+    .where_to_use{
+        width:100%;
+        box-sizing:border-box;
+        margin-top:10px;
+    }
     .con_name{
         width:100%;
         box-sizing:border-box;
         margin-top:10px;
     }
     .date{
+        width:100%;
+        box-sizing:border-box;
+        margin-top:10px;
+    }
+    .register_time{
         width:100%;
         box-sizing:border-box;
         margin-top:10px;
@@ -29,8 +39,10 @@
 <body>
     <div class="layout">
         <form action="/be/createpro" method="post">
+            <input name="where_to_use" type="text" class="where_to_use" placeholder="where_to_use">
             <input name="con_name" type="text" class="con_name" placeholder="con_name">
             <input name="date" type="text" class="date" placeholder="date">
+            <input name="register_time" type="text" class="register_time" placeholder="register_time">
             <input name="serial_code" type="text" class="serial_code" placeholder="serial_code">
             <button type="submit">올리기</button>
         </form>
