@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세 페이지</title>
+</head>
+<body>
+<p th:text="${be.id}"></p>
+<p th:text="${be.con_name}"></p>
+<p th:text="${be.where_to_use}"></p>
+<p th:text="${be.serial_code}"></p>
+<p th:text="${be.date}"></p>
+<p th:text="${be.register_time}"></p>
+<a th:href="@{/be/delete(id=${be.id})}">글 삭제</a>
+<a th:href="@{/be/modify/{id}(id = ${be.id})}">수정</a>
+</body>
+</html>

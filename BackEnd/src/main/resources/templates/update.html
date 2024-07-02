@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Form</title>
+    <style>
+        .layout {
+            width: 500px;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+        .input-field {
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+        .input-field:last-of-type {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <form action="/be/update/{id}" method="post">
+        <input type="hidden" name="_method" value="put">
+        <input name="id" type="text" class="input-field" placeholder="id" required>
+        <input name="where_to_use" type="text" class="input-field" placeholder="where_to_use" required>
+        <input name="con_name" type="text" class="input-field" placeholder="con_name" required>
+        <input name="date" type="text" class="input-field" placeholder="date" required>
+        <input name="register_time" type="text" class="input-field" placeholder="register_time" required>
+        <input name="serial_code" type="text" class="input-field" placeholder="serial_code" required>
+        <button type="submit">Update</button>
+    </form>
+</div>
+</body>
+</html>
