@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface BERepository extends JpaRepository<BE, Long> {   //jpa레포지토리를 상속받아오기 BE레포지토리에
+public interface BERepository extends JpaRepository<BE, Integer> {   //jpa레포지토리를 상속받아오기 BE레포지토리에
 }

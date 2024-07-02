@@ -20,6 +20,7 @@
             <table>
                 <thead>
                 <tr>
+                    <th>id</th>
                     <th>where_to_use</th>
                     <th>con_name</th>
                     <th>date</th>
@@ -29,6 +30,7 @@
                 </thead>
                 <tbody>
                 <tr th:each = "be : ${list}">
+                    <td th:text="${be.id}"></td>
                     <td th:text="${be.where_to_use}"></td>
                     <td th:text="${be.con_name}"></td>
                     <td th:text="${be.date}"></td>
