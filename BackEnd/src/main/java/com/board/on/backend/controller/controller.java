@@ -35,7 +35,6 @@ public class controller {
             return "uploadError";
         }
     }
-
     @GetMapping("/be/list")
     public String list(Model model){
         model.addAttribute("list", beService.boardList());
@@ -55,4 +54,5 @@ public class controller {
     public String updateForm(){
         return "update";
     }
+
 }
