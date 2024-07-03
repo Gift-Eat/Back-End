@@ -13,6 +13,11 @@
         width:500px;
         height:500px;
     }
+    .layout_image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 </style>
 <body>
     <div class="layout">
@@ -21,24 +26,26 @@
                 <thead>
                 <tr>
                     <th>where_to_use</th>
-                    <th>con_name</th>
-                    <th>date</th>
+                    <th>gifticon_name</th>
+                    <th>expiration_date</th>
                     <th>serial_code</th>
                     <th>register_time</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each = "be : ${list}">
-                    <td th:text="${be.where_to_use}"></td>
-                    <td th:text="${be.con_name}"></td>
-                    <td th:text="${be.date}"></td>
-                    <td th:text="${be.serial_code}"></td>
-                    <td th:text="${be.register_time}"></td>
+                <tr th:each = "gifticon : ${list}">
+                    <td th:text="${gifticon.where_to_use}"></td>
+                    <td th:text="${gifticon.gifticon_name}"></td>
+                    <td th:text="${gifticon.expiration_date}"></td>
+                    <td th:text="${gifticon.serial_code}"></td>
+                    <td th:text="${gifticon.register_time}"></td>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <div class="layout_image"></div>
+        <div class="layout_image">
+            <img th:src="${gifticon.original_image_path}" alt="Image">
+        </div>
     </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
 </head>
@@ -14,12 +14,12 @@
         box-sizing:border-box;
         margin-top:10px;
     }
-    .con_name{
+    .gifticon_name{
         width:100%;
         box-sizing:border-box;
         margin-top:10px;
     }
-    .date{
+    .expiration_date{
         width:100%;
         box-sizing:border-box;
         margin-top:10px;
@@ -38,12 +38,14 @@
 </style>
 <body>
     <div class="layout">
-        <form action="/be/createpro" method="post">
+        <form th:action="@{/be/createpro}" method="post" enctype="multipart/form-data">
             <input name="where_to_use" type="text" class="where_to_use" placeholder="where_to_use">
-            <input name="con_name" type="text" class="con_name" placeholder="con_name">
-            <input name="date" type="text" class="date" placeholder="date">
+            <input name="gifticon_name" type="text" class="gifticon_name" placeholder="gifticon_name">
+            <input name="expiration_date" type="text" class="expiration_date" placeholder="expiration_date">
             <input name="register_time" type="text" class="register_time" placeholder="register_time">
             <input name="serial_code" type="text" class="serial_code" placeholder="serial_code">
+            <br/>
+            <input type="file" id="file" name="file" required/>
             <button type="submit">올리기</button>
         </form>
     </div>
