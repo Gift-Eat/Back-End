@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 등록</title>
+</head>
+<style>
+    .layout{
+        width:500px;
+        margin:0 auto;
+        margin-top:40px;
+    }
+    .id{
+        width:100%;
+        box-sizing:border-box;
+        margin-top:10px;
+    }
+    .pw{
+        width:100%;
+        box-sizing:border-box;
+        margin-top:10px;
+    }
+    .name{
+        width:100%;
+        box-sizing:border-box;
+        margin-top:10px;
+    }
+    .email{
+        width:100%;
+        box-sizing:border-box;
+        margin-top:10px;
+    }
+</style>
+<body>
+<div class="layout">
+    <form th:action="@{/be/user/createpro}" method="post">
+        <input name="userId" type="text" placeholder="ID" class="id">
+        <input name="userPassword" type="text" placeholder="PASSWORD" class="pw">
+        <input name="userName" type="text" placeholder="NAME" class="name">
+        <input name="email" type="text" placeholder="E-MAIL" class="email">
+        <br/>
+        <button type="submit">등록하기</button>
+    </form>
+</div>
+</body>
+</html>
