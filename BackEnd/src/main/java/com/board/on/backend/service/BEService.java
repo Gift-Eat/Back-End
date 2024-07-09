@@ -25,7 +25,7 @@ public class BEService{
             Gifticon existingBE = optionalBE.get();
             existingBE.setGifticon_name(updatedBE.getGifticon_name());
             existingBE.setSerial_code(updatedBE.getSerial_code());
-            existingBE.setExpiration_date(updatedBE.getExpiration_date());
+            existingBE.setExpirationDate(updatedBE.getExpiration_date());
             existingBE.setWhere_to_use(updatedBE.getWhere_to_use());
             existingBE.setRegister_time(updatedBE.getRegister_time());
             return beRepository.save(existingBE);

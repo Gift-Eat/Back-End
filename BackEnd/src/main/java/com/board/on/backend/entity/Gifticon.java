@@ -1,8 +1,5 @@
 package com.board.on.backend.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -13,14 +10,31 @@ public class Gifticon {
     private Integer gifticon_id;
     private String gifticon_name;
     private String serial_code;
-    private String expiration_date;
+    private Integer expiration_date;
     private String where_to_use;
     private String register_time;
-    private Integer category_id;
     private String original_image_path;
     private String original_image_name;
     private String small_image_path;
     private String small_image_name;
+
+    public void setGifticon_name(String gifticon_name) {
+        this.gifticon_name = gifticon_name;
+    }
+    public void setSerial_code(String serialCode) {
+        this.serial_code = serialCode;
+    }
+    public void setExpirationDate(Integer expirationDate) {
+        this.expiration_date = expirationDate;
+    }
+    public void setWhere_to_use(String whereToUse) {
+        this.where_to_use = whereToUse;
+    }
+    public void setRegister_time(String registerTime) {
+        this.register_time = registerTime;
+    }
+
+
 
     public void setFileName(String fileName){
         this.original_image_name = fileName;
