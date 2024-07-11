@@ -19,7 +19,7 @@ public class JsonController {
     @Autowired
     private ImageService imageService;
     @PostMapping("/be/createpro")
-    public ResponseEntity<Gifticon> createPro(Gifticon gifticon, Model model) {
+    public ResponseEntity<Gifticon> createPro(@RequestBody Gifticon gifticon, Model model) {
         beService.write(gifticon);
         model.addAttribute("gifticon", gifticon);
         return ResponseEntity.ok().body(gifticon);
@@ -27,20 +27,20 @@ public class JsonController {
 
 
 
-//    @PostMapping("/be/create")
-//    public ResponseEntity<Gifticon> createFormPro(@RequestParam("file") MultipartFile file, Gifticon gifticon, Model model) {
-//        try {
-//            Gifticon originalImage = imageService.saveImage(file);
-//            gifticon.setFileName(originalImage.getFileName());
-//            gifticon.setFilePath(originalImage.getFilePath());
-//            beService.write(gifticon);
-//            model.addAttribute("gifticon", gifticon);
-//            return ResponseEntity.ok().body(gifticon);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return ResponseEntity.status(500).body(null);
-//        }
-//    }
+    @PostMapping("/be/create")
+    public ResponseEntity<Gifticon> createFormPro(@RequestPart("file") MultipartFile file,@RequestPart("gifticon") Gifticon gifticon, Model model) {
+        try {
+            Gifticon originalImage = imageService.saveImage(file);
+            gifticon.setFileName(originalImage.getFileName());
+            gifticon.setFilePath(originalImage.getFilePath());
+            beService.write(gifticon);
+            model.addAttribute("gifticon", gifticon);
+            return ResponseEntity.ok().body(gifticon);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body(null);
+        }
+    }
 
 
     @GetMapping("/be/list")
