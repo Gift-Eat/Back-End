@@ -26,16 +26,17 @@
                     <th>expiration_date</th>
                     <th>serial_code</th>
                     <th>register_time</th>
+                    <th>image</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each = "gifticon : ${list}">
-                    <td th:text="${gifticon.getWhere_to_use}"></td>
-                    <td th:text="${gifticon.getGifticon_name}"></td>
+                    <td th:text="${gifticon.getWhere_to_use()}"></td>
+                    <td th:text="${gifticon.getGifticon_name()}"></td>
                     <td th:text="${gifticon.getExpiration_date()}"></td>
-                    <td th:text="${gifticon.getSerial_code}"></td>
-                    <td th:text="${gifticon.getRegister_time}"></td>
-                    <td><img th:src="${gifticon.original_image_path}" th:alt="${gifticon.getGifticon_name}"></td>
+                    <td th:text="${gifticon.getSerial_code()}"></td>
+                    <td th:text="${gifticon.getRegister_time()}"></td>
+                    <td><img th:src="@{${gifticon.getFilePath()}}" th:alt="${gifticon.getGifticon_name}"></td>
                 </tr>
                 </tbody>
             </table>

@@ -28,7 +28,7 @@ public class JsonController {
 
 
     @PostMapping("/be/create")
-    public ResponseEntity<Gifticon> createFormPro(@RequestPart("file") MultipartFile file,@RequestPart("gifticon") Gifticon gifticon, Model model) {
+    public ResponseEntity<Gifticon> createFormPro(@RequestPart("file") MultipartFile file,@RequestPart("gifticon") @RequestBody Gifticon gifticon, Model model) {
         try {
             Gifticon originalImage = imageService.saveImage(file);
             gifticon.setFileName(originalImage.getFileName());

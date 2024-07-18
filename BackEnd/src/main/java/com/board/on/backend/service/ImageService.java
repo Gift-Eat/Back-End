@@ -13,8 +13,8 @@ import java.io.IOException;
 
 
 @Service
-public class ImageService {
-    private static String UPLOAD_DIR = "/Users/jangjaesang/projectImage/";
+public class    ImageService {
+    private static String UPLOAD_DIR = "/home/ec2-user/image/";
     @Autowired
     private BERepository beRepository;
     public Gifticon saveImage(MultipartFile file) throws IOException {
