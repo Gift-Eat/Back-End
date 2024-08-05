@@ -14,13 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
     @Autowired
     private UserService userService;
-    @GetMapping("/be/user/create")
-    public String create() {
-        return "usercreate";
+    @GetMapping("/be/user/login")
+    public String loginpage() {
+        return "loginpage";
     }
-    @PostMapping("/be/user/createpro")
-    public String createpro(Model model, User user) {
-        userService.write(user);
+    @PostMapping("/be/user/loginpro")
+    public String loginpro(Model model, User user) {
         model.addAttribute("user", user);
         return "usercreate";
     }

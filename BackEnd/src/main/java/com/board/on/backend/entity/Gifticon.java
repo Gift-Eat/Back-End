@@ -26,6 +26,8 @@ public class Gifticon {
     private String small_image_path;
     @Column(name="small_image_name")
     private String small_image_name;
+    @Column(name="dayleft")
+    private Integer dayLeft;
 
     public void className(String gifticon_name, String serial_code, Integer expiration_date, String where_to_use, String register_time){
         this.gifticon_name = gifticon_name;
@@ -50,6 +52,9 @@ public class Gifticon {
     }
     public void setRegister_time(String registerTime) {
         this.register_time = registerTime;
+    }
+    public void setDayLeft(Integer dayLeft) {
+        this.dayLeft = dayLeft;
     }
 
 

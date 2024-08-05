@@ -42,7 +42,6 @@ public class JsonController {
         }
     }
 
-
     @GetMapping("/be/list")
     public ResponseEntity<List<Gifticon>> list(){
         List<Gifticon> list = beService.boardList();
