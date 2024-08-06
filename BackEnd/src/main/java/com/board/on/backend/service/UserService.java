@@ -38,6 +38,14 @@ public class UserService {
         }
         return user;
     }
+    public User getLoginUserById(Integer userId){
+        if(userId == null) return null;
+
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if(optionalUser.isEmpty()) return null;
+        return optionalUser.get();
+    }
+
     public void deleteByName(String userName){
         Optional<User>optionalUser = userRepository.findByUserName(userName);
         if(optionalUser.isPresent()){
