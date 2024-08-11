@@ -10,14 +10,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
-import java.util.List;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class UserService {
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     public boolean checkUserIdDuplicate(String userId){
         return userRepository.existsByUserId(userId);
     }
@@ -38,10 +36,9 @@ public class UserService {
         }
         return user;
     }
-    public User getLoginUserById(Integer userId){
+    public User getLoginUserById(String userId){
         if(userId == null) return null;
-
-        Optional<User> optionalUser = userRepository.findById(userId);
+        Optional<User> optionalUser = userRepository.findByUserId(userId);
         if(optionalUser.isEmpty()) return null;
         return optionalUser.get();
     }

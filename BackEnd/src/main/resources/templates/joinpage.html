@@ -7,17 +7,17 @@
 </head>
 <body>
 <div>
-    <h1><a th:href="|/${loginType}|">[[${pageName}]]</a></h1> <hr/>
+    <h1><a th:href="|/${loginType}/|">[[${pageName}]]</a></h1> <hr/>
     <h2>회원 가입</h2>
-    <form th:method="post" th:action="|@{/{loginType}/join (loginType=${loginType})}|" th:object="${joinRequest}">
+    <form th:method="post" th:action="|@{/{loginType}/joinpro (loginType=${loginType})}|" th:object="${joinRequest}">
         <div>
-            <label th:for="loginId">로그인 아이디 : </label>
+            <label th:for="userId">로그인 아이디 : </label>
             <input type="text" th:field="*{userId}" th:errorclass="error-input"/>
             <div class="error-class" th:errors="*{userId}"></div>
         </div>
         <br/>
         <div>
-            <label th:for="password">비밀번호 : </label>
+            <label th:for="userPassword">비밀번호 : </label>
             <input type="password" th:field="*{userPassword}" th:errorclass="error-input"/>
             <div class="error-class" th:errors="*{userPassword}"></div>
         </div>
@@ -29,7 +29,7 @@
         </div>
         <br/>
         <div>
-            <label th:for="nickname">닉네임 : </label>
+            <label th:for="userName">닉네임 : </label>
             <input type="text" th:field="*{userName}" th:errorclass="error-input"/>
             <div class="error-class" th:errors="*{userName}"></div>
         </div>

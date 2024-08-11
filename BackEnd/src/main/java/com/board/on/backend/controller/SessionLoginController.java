@@ -17,13 +17,12 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/session_login")
+@RequestMapping("/session-login")
 public class SessionLoginController {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @GetMapping("/")
-    public String home(Model model, @SessionAttribute(name="userId", required=false) Integer userId) {
+    public String home(Model model, @SessionAttribute(name="userId", required=false) String userId) {
         model.addAttribute("loginType", "session-login");
         model.addAttribute("pageName", "세션 로그인");
 
@@ -40,7 +39,7 @@ public class SessionLoginController {
         model.addAttribute("joinRequest", new JoinRequest());
         return "joinpage";
     }
-    @PostMapping("/joinprocess")
+    @PostMapping("/joinpro")
     public String join(Model model,@Valid @ModelAttribute JoinRequest joinRequest, BindingResult bindingResult){
         model.addAttribute("loginType", "session-login");
         model.addAttribute("pageName", "세션 로그인");
@@ -58,7 +57,7 @@ public class SessionLoginController {
             return "joinpage";
         }
         userService.join(joinRequest);
-        return "redirect:/session_login";
+        return "redirect:/session-login/";
     }
 
     @GetMapping("/login")
@@ -68,7 +67,7 @@ public class SessionLoginController {
         model.addAttribute("loginRequest", new LoginRequest());
         return "loginpage";
     }
-    @PostMapping("/loginprocess")
+    @PostMapping("/loginpro")
     public String login(Model model,@ModelAttribute LoginRequest loginRequest, BindingResult bindingResult, HttpServletRequest httpServletRequest){
         model.addAttribute("loginType", "session-login");
         model.addAttribute("pageName", "세션 로그인");
@@ -83,7 +82,27 @@ public class SessionLoginController {
         HttpSession session = httpServletRequest.getSession(true);
         session.setAttribute("userId", user.getUserId());
         session.setMaxInactiveInterval(1800);
-        return "redirect:/session_login";
+        return "redirect:/session-login/";
     }
-
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, Model model){
+        model.addAttribute("loginType", "session-login");
+        model.addAttribute("pageName", "세션 로그인");
+        HttpSession session = request.getSession(false);
+        if(session != null){
+            session.invalidate();
+        }
+        return "redirect:/session-login/";
+    }
+    @GetMapping("/info")
+    public String userInfo(Model model, @SessionAttribute(name="userId", required=false) String userId) {
+        model.addAttribute("loginType", "session-login");
+        model.addAttribute("pageName", "세션 로그인");
+        User loginUser = userService.getLoginUserById(userId);
+        if(loginUser == null) {
+            return "redirect:/session-login/login";
+        }
+        model.addAttribute("user", loginUser);
+        return "info";
+    }
 }
