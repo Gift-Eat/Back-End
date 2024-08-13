@@ -6,6 +6,8 @@ import com.board.on.backend.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import com.board.on.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -68,21 +73,26 @@ public class SessionLoginController {
         return "loginpage";
     }
     @PostMapping("/loginpro")
-    public String login(Model model,@ModelAttribute LoginRequest loginRequest, BindingResult bindingResult, HttpServletRequest httpServletRequest){
+    public ResponseEntity<Map<String, Object>> login(Model model, @RequestBody LoginRequest loginRequest, BindingResult bindingResult, HttpServletRequest httpServletRequest){
         model.addAttribute("loginType", "session-login");
         model.addAttribute("pageName", "세션 로그인");
+        Map<String, Object> response = new HashMap<>();
         User user = userService.login(loginRequest);
         if(user == null){
             bindingResult.reject("loginFail", "로그인 실패!");
         }
         if(bindingResult.hasErrors()) {
-            return "loginpage";
+            response.put("status", HttpStatus.BAD_REQUEST.value());
+            response.put("message", "로그인 실패!");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
         httpServletRequest.getSession().invalidate();
         HttpSession session = httpServletRequest.getSession(true);
         session.setAttribute("userId", user.getUserId());
         session.setMaxInactiveInterval(1800);
-        return "redirect:/session-login/";
+        response.put("status", "success");
+        response.put("message", "로그인 성공!");
+        return ResponseEntity.ok(response);
     }
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, Model model){

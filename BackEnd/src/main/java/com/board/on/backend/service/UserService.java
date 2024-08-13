@@ -42,7 +42,6 @@ public class UserService {
         if(optionalUser.isEmpty()) return null;
         return optionalUser.get();
     }
-
     public void deleteByName(String userName){
         Optional<User>optionalUser = userRepository.findByUserName(userName);
         if(optionalUser.isPresent()){
