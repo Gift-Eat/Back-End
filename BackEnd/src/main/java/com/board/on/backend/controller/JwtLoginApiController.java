@@ -6,7 +6,9 @@ import com.board.on.backend.DTO.LoginRequest;
 import com.board.on.backend.Util.JwtTokenUtil;
 import com.board.on.backend.entity.User;
 import com.board.on.backend.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,4 +50,5 @@ public class JwtLoginApiController {
         return String.format("userId : %s\nusername : %s\nrole:%s",
                 user.getUserId(), user.getUserName(), user.getRole());
     }
+
 }

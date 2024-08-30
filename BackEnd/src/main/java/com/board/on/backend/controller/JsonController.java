@@ -24,24 +24,19 @@ public class JsonController {
         model.addAttribute("gifticon", gifticon);
         return ResponseEntity.ok().body(gifticon);
     }
-
-
-
     @PostMapping("/be/create")
-    public ResponseEntity<Gifticon> createFormPro(@RequestPart("file") MultipartFile file,@RequestPart("gifticon") @RequestBody Gifticon gifticon, Model model) {
+    public ResponseEntity<Gifticon> createFormPro(@RequestPart("file") MultipartFile file,@RequestPart("gifticon") Gifticon gifticon) {
         try {
             Gifticon originalImage = imageService.saveImage(file);
             gifticon.setFileName(originalImage.getFileName());
             gifticon.setFilePath(originalImage.getFilePath());
             beService.write(gifticon);
-            model.addAttribute("gifticon", gifticon);
             return ResponseEntity.ok().body(gifticon);
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(500).body(null);
         }
     }
-
     @GetMapping("/be/list")
     public ResponseEntity<List<Gifticon>> list(){
         List<Gifticon> list = beService.boardList();
